@@ -1,11 +1,10 @@
 {
-  "name": "chrome-extension-boilerplate-react",
-  "version": "4.0.1",
-  "description": "A chrome extension boilerplate built with React 17 and Webpack 5",
-  "license": "MIT",
+  "name": "ArtOffset",
+  "version": "0.1.0",
+  "description": "A chrome extension with the goal of offsetting carbon emissions from NFT transactions through donations.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/lxieyang/chrome-extension-boilerplate-react.git"
+    "url": "https://github.com/jlutan/ArtOffset.git"
   },
   "scripts": {
     "build": "node utils/build.js",
@@ -17,6 +16,7 @@
     "@types/chrome": "0.0.132",
     "@types/react": "^17.0.2",
     "@types/react-dom": "^17.0.1",
+    "ethereumjs-util": "^7.0.10",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-hot-loader": "^4.13.0"
