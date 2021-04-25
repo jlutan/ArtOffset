@@ -1,6 +1,9 @@
 const path = require('path');
 
 var config = {
+  node: {
+    fs: "empty"
+  },
   mode: "development",
   devtool: "inline-source-map",
   context: path.resolve(__dirname),

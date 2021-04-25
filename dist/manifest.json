@@ -2,7 +2,7 @@
     "name": "ArtOffset",
     "version": "0.1.0",
     "manifest_version": 3,
-    "description": "Chrome extension with the goal of offsetting carbon emissions from Ethereum transactions through donations to offsetting projects.",
+    "description": "Ethereum transaction carbon offsetter that works through donations to active offsetting projects.",
     "icons": {
       "34": "icons/icon-34.png",
       "128": "icons/icon-128.png"
@@ -18,7 +18,8 @@
     },
     "permissions": [
       "tabs",
-      "scripting"
+      "scripting",
+      "cookies"
     ],
     "content_security_policy": {
       "default-src": "self"
