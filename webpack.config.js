@@ -1,28 +1,42 @@
 const path = require('path');
 
-module.exports = {
-    mode: "development",
-    devtool: "inline-source-map",
+var config = {
+  mode: "development",
+  devtool: "inline-source-map",
+  context: path.resolve(__dirname),
+  resolve: {
+    extensions: [".ts", ".tsx", ".js", ".jsx"]
+  },
+  module: {
+    rules: [
+      { test: /\.tsx?$/, loader: "ts-loader" },
+      { test: /\.css$/, use: ['style-loader', 'css-loader'] }
+    ]
+  },
+}
 
-    entry: {
-        content: './src/app/content.ts',
-        background: './src/app/background.ts',
-        popup: './src/ui/popup.tsx',
-    },
+// copies 'config' and new object to empty object
+var scriptConfig = Object.assign({}, config, {
+  entry: {
+    content: './src/app/content.ts',
+    popup: './src/ui/popup.tsx'
+  },
+  output: {
+    path: path.resolve(__dirname, 'dist/scripts'),
+    filename: '[name].js'
+  }
+});
 
-    output: {
-        path: path.resolve(__dirname, 'dist/js'),
-        filename: '[name].js'
-    },
+var backgroundConfig = Object.assign({}, config, {
+  entry: {
+    background: './src/app/background.ts',
+  },
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'background.js'
+  }
+})
 
-    resolve: {
-        extensions: [".ts", ".tsx", ".js"]
-    },
-
-    module: {
-        rules: [
-            { test: /\.tsx?$/, loader: "ts-loader" },
-            { test: /\.css$/, use: ['style-loader', 'css-loader'] }
-        ]
-    },
-};
+module.exports = [
+  scriptConfig, backgroundConfig
+]
