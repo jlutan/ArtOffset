@@ -1,38 +1,29 @@
 {
-    "name": "ArtOffset",
-    "version": "0.1.0",
-    "manifest_version": 3,
-    "description": "Ethereum transaction carbon offsetter that works through donations to active offsetting projects.",
-    "icons": {
-      "34": "icons/icon-34.png",
-      "128": "icons/icon-128.png"
-    },
-    "action": {
-      "default_title": "ArtOffset",
-      "default_popup": "popup.html",
-      "default_icon": "icons/icon-34.png"
-    },
-    "default_locale": "en",
-    "background": {
-      "service_worker": "background.js"
-    },
-    "permissions": [
-      "tabs",
-      "scripting",
-      "cookies"
-    ],
-    "content_security_policy": {
-      "default-src": "self"
-    },
-    "content_scripts": [
-      {
-        "matches": [
-          "https://*/*"
-        ],
-        "js": [
-          "scripts/content.js"
-        ]
-      }
-    ]
-  }
-  
+  "name": "ArtOffset",
+  "version": "0.1.0",
+  "manifest_version": 3,
+  "description": "Ethereum transaction carbon offsetter that works through donations to active offsetting projects.",
+  "icons": {
+    "34": "icons/icon-34.png",
+    "128": "icons/icon-128.png"
+  },
+  "action": {
+    "default_title": "ArtOffset",
+    "default_popup": "popup.html",
+    "default_icon": "icons/icon-34.png"
+  },
+  "default_locale": "en",
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": ["tabs", "scripting", "cookies"],
+  "content_security_policy": {
+    "default-src": "self"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://*/*"],
+      "js": ["scripts/content.js"]
+    }
+  ]
+}
