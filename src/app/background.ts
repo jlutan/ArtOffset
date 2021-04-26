@@ -20,26 +20,37 @@ const createSocket = (address: string) => {
 
   socket.addEventListener("open", (event) => {
     console.log("Connection opened -", event);
+    // subscribe to notifications of new pending transactions
     socket.send(`{
       "jsonrpc": "2.0",
-      "id": "get_transaction",
+      "id": "pending_transaction",
       "method": "eth_subscribe",
-      "params": ["transaction"]
+      "params": ["newPendingTransactions"]
     }`);
   });
 
+  // listens for new pending transactions in the Ethereum blockchain
   socket.addEventListener("message", (event) => {
-    console.log("socket received a message event", event);
-    if (event.lastEventId === "get_transaction") {
-      const data: any = JSON.parse(
-        event.data
-      );
-      console.log("New Transaction,", data.id, data);
-      // chrome.runtime.sendMessage("found_valid_transaction");
-      // // calculate deposit amount...
-      // let deposit_sugg = 0; // PLACEHOLDER
-      // chrome.runtime.sendMessage(deposit_sugg);
-    }
+    const data: any = JSON.parse(
+      event.data
+    );
+    console.log("Socket received a message, id:", data.id, data);
+    // if (data.id === "pending_transaction") {
+    //   socket.send(`{
+    //     "jsonrpc": "2.0",
+    //     "id": "transaction_data",
+    //     "method": "eth_getTransactionByHash",
+    //     "params": [${data.result}]
+    //   }`)
+    // } else if (data.id === "transaction_data") {
+    //   console.log("Received transaction data", data);
+    // }
+
+
+    // chrome.runtime.sendMessage("found_valid_transaction");
+    // // calculate deposit amount...
+    // let deposit_sugg = 0; // PLACEHOLDER
+    // chrome.runtime.sendMessage(deposit_sugg);
   });
 
   socket.addEventListener("close", (event) => {

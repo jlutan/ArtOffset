@@ -22,7 +22,8 @@ var config = {
 var scriptConfig = Object.assign({}, config, {
   entry: {
     content: './src/app/content.ts',
-    popup: './src/ui/popup.tsx'
+    popup: './src/ui/popup.tsx',
+    options: './src/ui/options.tsx'
   },
   output: {
     path: path.resolve(__dirname, 'dist/scripts'),
